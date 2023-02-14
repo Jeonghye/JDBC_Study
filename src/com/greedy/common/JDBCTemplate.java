@@ -11,7 +11,7 @@ import java.sql.Statement;
 import java.util.Properties;
 
 public class JDBCTemplate {
-
+	
 	public static Connection getConnection() {
 		
 		Connection con = null;
@@ -19,14 +19,15 @@ public class JDBCTemplate {
 		Properties prop = new Properties();
 		
 		try {
-			prop.load(new FileReader("config/connection-info.properties"));
+			prop.load(new FileReader("config/driver.properties"));
 			
 			String driver = prop.getProperty("driver");
 			String url = prop.getProperty("url");
 			
 			Class.forName(driver);
-			
 			con = DriverManager.getConnection(url, prop);
+			
+			con.setAutoCommit(false);
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -70,4 +71,25 @@ public class JDBCTemplate {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void commit(Connection con) {
+		try {
+			if(con != null && !con.isClosed()) {
+				con.commit();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void rollback(Connection con) {
+		try {
+			if(con != null && !con.isClosed()) {
+				con.rollback();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

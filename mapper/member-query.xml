@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="insertMember">
+		INSERT /* com.greedy.run.Application#main() */
+		  INTO TBL_MEMBER A
+		 (
+		   A.MEMBER_NO
+		 , A.MEMBER_ID
+		 , A.MEMBER_PWD
+		 , A.MEMBER_NAME
+		 , A.GENDER
+		 , A.EMAIL
+		 , A.PHONE
+		 , A.ADDRESS
+		 , A.AGE
+		 , A.ENROLL_DATE
+		 )
+		 VALUES
+		 (
+		   SEQ_MEMBER_NO.NEXTVAL
+		 , ?
+		 , ?
+		 , ?
+		 , ?
+		 , ?
+		 , ?
+		 , ?
+		 , ?
+		 , SYSDATE
+		 )
+	</entry>
+	<entry key="allMemberList">
+	    SELECT
+			   A.MEMBER_NO
+			 , A.MEMBER_ID
+			 , A.MEMBER_PWD
+			 , A.MEMBER_NAME
+			 , A.GENDER
+			 , A.EMAIL
+			 , A.PHONE
+			 , A.ADDRESS
+			 , A.AGE
+			 , A.ENROLL_DATE
+		  FROM TBL_MEMBER A
+	</entry>
+	<entry key="selectMemberById">
+	    SELECT
+			   A.MEMBER_NO
+			 , A.MEMBER_ID
+			 , A.MEMBER_PWD
+			 , A.MEMBER_NAME
+			 , A.GENDER
+			 , A.EMAIL
+			 , A.PHONE
+			 , A.ADDRESS
+			 , A.AGE
+			 , A.ENROLL_DATE
+		  FROM TBL_MEMBER A
+		 WHERE A.MEMBER_ID = ?
+	</entry>
+	<entry key="selectMemberByGender">
+	    SELECT
+			   A.MEMBER_NO
+			 , A.MEMBER_ID
+			 , A.MEMBER_PWD
+			 , A.MEMBER_NAME
+			 , A.GENDER
+			 , A.EMAIL
+			 , A.PHONE
+			 , A.ADDRESS
+			 , A.AGE
+			 , A.ENROLL_DATE
+		  FROM TBL_MEMBER A
+		 WHERE A.GENDER = ?
+	</entry>
+	<entry key="updatePassword">
+  		UPDATE
+       		   TBL_MEMBER A
+           SET A.MEMBER_PWD = ?
+         WHERE A.MEMBER_ID = ?
+	</entry>
+	<entry key="updateEmail">
+  		UPDATE
+       		   TBL_MEMBER A
+           SET A.EMAIL = ?
+         WHERE A.MEMBER_ID = ?
+	</entry>
+	<entry key="updatePhone">
+  		UPDATE
+       		   TBL_MEMBER A
+           SET A.PHONE = ?
+         WHERE A.MEMBER_ID = ?
+	</entry>
+	<entry key="updateAddress">
+  		UPDATE
+       		   TBL_MEMBER A
+           SET A.ADDRESS = ?
+         WHERE A.MEMBER_ID = ?
+	</entry>
+	<entry key="deleteMember">
+	   DELETE
+	     FROM TBL_MEMBER A
+	    WHERE A.MEMBER_ID =?
+	       
+	</entry>
+	
+</properties>
